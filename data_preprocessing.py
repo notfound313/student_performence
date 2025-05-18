@@ -73,19 +73,7 @@ def data_preprocessing(data):
     df["Unemployment_rate"] = scaler_Unemployment_rate.transform(np.asarray(data["Unemployment_rate"]).reshape(-1, 1))[0]
 
     # Apply PCA transformations
-    pca_1_input = pd.DataFrame([{
-        key: df[key] for key in pca_numerical_columns_1
-    }])
-    pca_2_input = pd.DataFrame([{
-        key: df[key] for key in pca_numerical_columns_2
-    }])
+    df[["pc1_1", "pc1_2", "pc1_3", "pc1_4", "pc1_5"]] = pca_1.transform(data[pca_numerical_columns_1])
     
-    pca1_result = pca_1.transform(pca_1_input)
-    pca2_result = pca_2.transform(pca_2_input)
-
-    df_pca = pd.DataFrame(pca1_result, columns=[f"pca1_{i+1}" for i in range(pca1_result.shape[1])])
-    df_pca2 = pd.DataFrame(pca2_result, columns=[f"pca2_{i+1}" for i in range(pca2_result.shape[1])])
-
-    df = pd.concat([df, df_pca, df_pca2], axis=1)
-
+    df[["pc2_1", "pc2_2","pc2_3"]] = pca_2.transform(data[pca_numerical_columns_2])
     return df
