@@ -51,12 +51,12 @@ def data_preprocessing(data):
     df = pd.DataFrame()
 
     # Encode categorical variables
-    df["Application_mode"] = encoder_Application_mode.transform(data["Application_mode"])
+    df["Tuition_fees_up_to_date"] = encoder_Tuition_fees_up_to_date.transform(data["Tuition_fees_up_to_date"])
+    df["Scholarship_holder"] = encoder_Scholarship_holder.transform(data["Scholarship_holder"])
     df["Course"] = encoder_Course.transform(data["Course"])
     df["Debtor"] = encoder_Debtor.transform(data["Debtor"])
     df["Gender"] = encoder_Gender.transform(data["Gender"])
-    df["Scholarship_holder"] = encoder_Scholarship_holder.transform(data["Scholarship_holder"])
-    df["Tuition_fees_up_to_date"] = encoder_Tuition_fees_up_to_date.transform(data["Tuition_fees_up_to_date"])
+    df["Application_mode"] = encoder_Application_mode.transform(data["Application_mode"])
 
     # Scale numerical variables
     data["Admission_grade"] = scaler_Admission_grade.transform(np.asarray(data["Admission_grade"]).reshape(-1, 1))[0]
