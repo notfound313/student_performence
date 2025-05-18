@@ -75,5 +75,5 @@ def data_preprocessing(data):
     # Apply PCA transformations
     df[["pc1_1", "pc1_2", "pc1_3", "pc1_4", "pc1_5"]] = pca_1.transform(data[pca_numerical_columns_1])
     
-    df[["pc2_1", "pc2_2","pc2_3"]] = pca_2.transform(data[pca_numerical_columns_2])
+    df[["pc2_1", "pc2_2","pca2_3"]] = pca_2.transform(data[pca_numerical_columns_2])
     return df
