@@ -98,9 +98,6 @@ with st.expander("📌 Masukkan Informasi Akademik & Personal", expanded=True):
 with st.expander("📄 Lihat Data Mentah"):
     st.dataframe(data, use_container_width=True)
 
-with st.expander("📄 Lihat Data Preprocessing"):
-    new_data = data_preprocessing(data)
-    st.dataframe(new_data, use_container_width=True)
 
 st.markdown("---")
 st.subheader("🔍 Hasil Prediksi")
